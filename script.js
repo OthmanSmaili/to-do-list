@@ -8,15 +8,19 @@ function inputLength() {
 
 function createListElement() {
     var li = document.createElement("li");
-    li.appendChild(document.createTextNode(input.value));
+
+    var taskText = document.createElement("span");
+    taskText.appendChild(document.createTextNode(input.value));
+    li.appendChild(taskText);
 
     var deleteBtn = document.createElement("button");
     deleteBtn.className = "delete-btn";
     deleteBtn.appendChild(document.createTextNode("X"));
     deleteBtn.addEventListener("click", deleteTask);
-
     li.appendChild(deleteBtn);
-    li.addEventListener("click", markDone);
+
+    taskText.addEventListener("click", markDone);
+    
     list.appendChild(li);
     input.value = "";
 }
